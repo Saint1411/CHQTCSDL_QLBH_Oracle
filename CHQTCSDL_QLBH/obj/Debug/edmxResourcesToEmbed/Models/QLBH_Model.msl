@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLBH_ModelStoreContainer" CdmEntityContainer="QLBH_Entities">
+    <EntitySetMapping Name="VIEW_DANHSACHHOADON">
+      <EntityTypeMapping TypeName="QLBH_Model.VIEW_DANHSACHHOADON">
+        <MappingFragment StoreEntitySet="VIEW_DANHSACHHOADON">
+          <ScalarProperty Name="SOHD" ColumnName="SOHD" />
+          <ScalarProperty Name="NGAY" ColumnName="NGAY" />
+          <ScalarProperty Name="HOTENKH" ColumnName="HOTENKH" />
+          <ScalarProperty Name="HOTENNV" ColumnName="HOTENNV" />
+          <ScalarProperty Name="TONGTG" ColumnName="TONGTG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_DANHSACHPHIEUNHAP">
+      <EntityTypeMapping TypeName="QLBH_Model.VIEW_DANHSACHPHIEUNHAP">
+        <MappingFragment StoreEntitySet="VIEW_DANHSACHPHIEUNHAP">
+          <ScalarProperty Name="MAPN" ColumnName="MAPN" />
+          <ScalarProperty Name="NGAYNHAP" ColumnName="NGAYNHAP" />
+          <ScalarProperty Name="TENNCC" ColumnName="TENNCC" />
+          <ScalarProperty Name="TENNV" ColumnName="TENNV" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_DANHSACHSANPHAM">
+      <EntityTypeMapping TypeName="QLBH_Model.VIEW_DANHSACHSANPHAM">
+        <MappingFragment StoreEntitySet="VIEW_DANHSACHSANPHAM">
+          <ScalarProperty Name="MASP" ColumnName="MASP" />
+          <ScalarProperty Name="TENSP" ColumnName="TENSP" />
+          <ScalarProperty Name="SLNHAP" ColumnName="SLNHAP" />
+          <ScalarProperty Name="SLTON" ColumnName="SLTON" />
+          <ScalarProperty Name="SLBAN" ColumnName="SLBAN" />
+          <ScalarProperty Name="DVT" ColumnName="DVT" />
+          <ScalarProperty Name="LOAISP" ColumnName="LOAISP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_HOATDONGCUANV">
+      <EntityTypeMapping TypeName="QLBH_Model.VIEW_HOATDONGCUANV">
+        <MappingFragment StoreEntitySet="VIEW_HOATDONGCUANV">
+          <ScalarProperty Name="MANV" ColumnName="MANV" />
+          <ScalarProperty Name="HOTEN" ColumnName="HOTEN" />
+          <ScalarProperty Name="GIOITINH" ColumnName="GIOITINH" />
+          <ScalarProperty Name="SDT" ColumnName="SDT" />
+          <ScalarProperty Name="DIACHI" ColumnName="DIACHI" />
+          <ScalarProperty Name="LUONG" ColumnName="LUONG" />
+          <ScalarProperty Name="SOHDDALAP" ColumnName="SOHDDALAP" />
+          <ScalarProperty Name="SOPHIEUDALAP" ColumnName="SOPHIEUDALAP" />
+          <ScalarProperty Name="LOINHUAN" ColumnName="LOINHUAN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="VIEW_LAIXUATCUASANPHAM">
+      <EntityTypeMapping TypeName="QLBH_Model.VIEW_LAIXUATCUASANPHAM">
+        <MappingFragment StoreEntitySet="VIEW_LAIXUATCUASANPHAM">
+          <ScalarProperty Name="MASP" ColumnName="MASP" />
+          <ScalarProperty Name="TENSP" ColumnName="TENSP" />
+          <ScalarProperty Name="SOLUONG" ColumnName="SOLUONG" />
+          <ScalarProperty Name="LAIXUAT" ColumnName="LAIXUAT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_CAPNHATCTHD" FunctionName="QLBH_Model.Store.SP_CAPNHATCTHD" />
+    <FunctionImportMapping FunctionImportName="SP_CAPNHATCTPN" FunctionName="QLBH_Model.Store.SP_CAPNHATCTPN" />
+    <FunctionImportMapping FunctionImportName="SP_CAPNHATHOADON" FunctionName="QLBH_Model.Store.SP_CAPNHATHOADON" />
+    <FunctionImportMapping FunctionImportName="SP_CAPNHATLOAISANPHAM" FunctionName="QLBH_Model.Store.SP_CAPNHATLOAISANPHAM" />
+    <FunctionImportMapping FunctionImportName="SP_CAPNHATPHIEUNHAP" FunctionName="QLBH_Model.Store.SP_CAPNHATPHIEUNHAP" />
+    <FunctionImportMapping FunctionImportName="SP_CAPNHATSANPHAM" FunctionName="QLBH_Model.Store.SP_CAPNHATSANPHAM" />
+    <FunctionImportMapping FunctionImportName="SP_CAPNHAT_DOANHSO_KHACHHANG" FunctionName="QLBH_Model.Store.SP_CAPNHAT_DOANHSO_KHACHHANG" />
+    <FunctionImportMapping FunctionImportName="SP_LAYSPBANDUOCNHIEUNHAT" FunctionName="QLBH_Model.Store.SP_LAYSPBANDUOCNHIEUNHAT" />
+    <FunctionImportMapping FunctionImportName="SP_THEMCTHD" FunctionName="QLBH_Model.Store.SP_THEMCTHD" />
+    <FunctionImportMapping FunctionImportName="SP_THEMCTPN" FunctionName="QLBH_Model.Store.SP_THEMCTPN" />
+    <FunctionImportMapping FunctionImportName="SP_THEMHOADON" FunctionName="QLBH_Model.Store.SP_THEMHOADON" />
+    <FunctionImportMapping FunctionImportName="SP_THEMLOAISANPHAM" FunctionName="QLBH_Model.Store.SP_THEMLOAISANPHAM" />
+    <FunctionImportMapping FunctionImportName="SP_THEMPHIEUNHAP" FunctionName="QLBH_Model.Store.SP_THEMPHIEUNHAP" />
+    <FunctionImportMapping FunctionImportName="SP_THEMSANPHAM" FunctionName="QLBH_Model.Store.SP_THEMSANPHAM" />
+    <FunctionImportMapping FunctionImportName="SP_TINHLAIXUATCUASANPHAM" FunctionName="QLBH_Model.Store.SP_TINHLAIXUATCUASANPHAM" />
+    <FunctionImportMapping FunctionImportName="SP_UPDATEDONGIACTHD" FunctionName="QLBH_Model.Store.SP_UPDATEDONGIACTHD" />
+    <FunctionImportMapping FunctionImportName="SP_UPDATETONGTGHOADON" FunctionName="QLBH_Model.Store.SP_UPDATETONGTGHOADON" />
+    <FunctionImportMapping FunctionImportName="SP_XOACTHD" FunctionName="QLBH_Model.Store.SP_XOACTHD" />
+    <FunctionImportMapping FunctionImportName="SP_XOACTPN" FunctionName="QLBH_Model.Store.SP_XOACTPN" />
+    <FunctionImportMapping FunctionImportName="SP_XOAHOADON" FunctionName="QLBH_Model.Store.SP_XOAHOADON" />
+    <FunctionImportMapping FunctionImportName="SP_XOALOAISANPHAM" FunctionName="QLBH_Model.Store.SP_XOALOAISANPHAM" />
+    <FunctionImportMapping FunctionImportName="SP_XOAPHIEUNHAP" FunctionName="QLBH_Model.Store.SP_XOAPHIEUNHAP" />
+    <FunctionImportMapping FunctionImportName="SP_XOASANPHAM" FunctionName="QLBH_Model.Store.SP_XOASANPHAM" />
+  </EntityContainerMapping>
+</Mapping>

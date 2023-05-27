@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="270b9e4601c74eee911895df6addc12c" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.CTHD" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CTPN" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.KHACHHANG" Width="1.5" PointX="0.75" PointY="15.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.LOAISANPHAM" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.NHACUNGCAP" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.NHANVIEN" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.PHIEUNHAP" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.QUANTRI" Width="1.5" PointX="5.75" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.SANPHAM" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <AssociationConnector Association="Model.CTHD_SANPHAM_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.CTPN_FK1" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.CTPN_PHIEUNHAP" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.SANPHAM_LOAISP_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.PHIEUNHAP_NHACC" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.PHIEUNHAP_NHANVIEN" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.VIEW_DANHSACHHOADON" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.VIEW_DANHSACHPHIEUNHAP" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.VIEW_DANHSACHSANPHAM" Width="1.5" PointX="7.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Model.VIEW_HOATDONGCUANV" Width="1.5" PointX="8.75" PointY="4.75" />
+        <EntityTypeShape EntityType="Model.VIEW_LAIXUATCUASANPHAM" Width="1.5" PointX="8.75" PointY="8.75" />
+        <EntityTypeShape EntityType="Model.VIEW_DS_KHACHHANG" Width="1.5" PointX="5.375" PointY="9.75" />
+        <EntityTypeShape EntityType="Model.HOADON" Width="1.5" PointX="3" PointY="13.25" />
+        <AssociationConnector Association="Model.CTHD_HOADON_FK" />
+        <AssociationConnector Association="Model.HOADON_KHACHHANG_FK" />
+        <AssociationConnector Association="Model.HOADON_NHANVIEN_FK" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

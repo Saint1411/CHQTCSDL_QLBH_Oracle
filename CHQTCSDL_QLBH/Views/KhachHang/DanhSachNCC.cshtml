@@ -1,0 +1,61 @@
+﻿@model IEnumerable<CHQTCSDL_QLBH.Models.NHACUNGCAP>
+
+@{
+    ViewBag.Title = "Danh sách nhà cung cấp";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh Sách Nhà Cung Cấp</h2>
+<a href="~/KhachHang/ThemNCC" class="btn btn-info" style="margin-bottom: 12px">
+    <i class="far fa-user"></i> Thêm
+</a>
+<p>
+    Số nhà cung cấp: <span style="color:royalblue">@ViewBag.SoKhachHang</span>  <i class="fas fa-user-circle"></i>
+</p>
+<table class="table table-hover">
+    <tr>
+        <th>
+            Mã NCC
+        </th>
+        <th>
+            Tên nhà cung cấp
+        </th>
+        <th>
+            Địa chỉ
+        </th>
+        <th>
+            Số điện thoại
+        </th>
+        <th>
+            Quốc gia
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MANCC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TENNCC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DIACHI)
+            </td>
+
+            <td>
+                @item.SDT
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QUOCGIA)
+            </td>
+            <td>
+                <a href="@Url.Action("CapNhatNCC", new { MANCC = item.MANCC })" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i></a>
+                <a href="@Url.Action("XoaNCC", new { MANCC = item.MANCC })" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+            </td>
+        </tr>
+    }
+
+</table>

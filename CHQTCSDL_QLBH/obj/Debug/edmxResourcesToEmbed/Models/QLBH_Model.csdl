@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLBH_Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="VIEW_DANHSACHHOADON">
+    <Key>
+      <PropertyRef Name="SOHD" />
+    </Key>
+    <Property Name="SOHD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NGAY" Type="DateTime" />
+    <Property Name="HOTENKH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HOTENNV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TONGTG" Type="Decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="VIEW_DANHSACHPHIEUNHAP">
+    <Key>
+      <PropertyRef Name="MAPN" />
+    </Key>
+    <Property Name="MAPN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NGAYNHAP" Type="DateTime" />
+    <Property Name="TENNCC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TENNV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="VIEW_DANHSACHSANPHAM">
+    <Key>
+      <PropertyRef Name="MASP" />
+      <PropertyRef Name="LOAISP" />
+    </Key>
+    <Property Name="MASP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENSP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SLNHAP" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="SLTON" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="SLBAN" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DVT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LOAISP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VIEW_HOATDONGCUANV">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="GIOITINH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="SDT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LUONG" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="SOHDDALAP" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="SOPHIEUDALAP" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="LOINHUAN" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="VIEW_LAIXUATCUASANPHAM">
+    <Key>
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MASP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENSP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SOLUONG" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="LAIXUAT" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityContainer Name="QLBH_Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="VIEW_DANHSACHHOADON" EntityType="Self.VIEW_DANHSACHHOADON" />
+    <EntitySet Name="VIEW_DANHSACHPHIEUNHAP" EntityType="Self.VIEW_DANHSACHPHIEUNHAP" />
+    <EntitySet Name="VIEW_DANHSACHSANPHAM" EntityType="Self.VIEW_DANHSACHSANPHAM" />
+    <EntitySet Name="VIEW_HOATDONGCUANV" EntityType="Self.VIEW_HOATDONGCUANV" />
+    <EntitySet Name="VIEW_LAIXUATCUASANPHAM" EntityType="Self.VIEW_LAIXUATCUASANPHAM" />
+    <FunctionImport Name="SP_CAPNHATCTHD">
+      <Parameter Name="V_SOHD" Mode="In" Type="String" />
+      <Parameter Name="V_MASP" Mode="In" Type="String" />
+      <Parameter Name="V_SOLUONG_MOI" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="SP_CAPNHATCTPN">
+      <Parameter Name="V_MAPN" Mode="In" Type="String" />
+      <Parameter Name="V_MASP" Mode="In" Type="String" />
+      <Parameter Name="V_SOLUONG_MOI" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="SP_CAPNHATHOADON">
+      <Parameter Name="V_SOHD" Mode="In" Type="String" />
+      <Parameter Name="V_NGAY" Mode="In" Type="DateTime" />
+      <Parameter Name="V_MAKH" Mode="In" Type="String" />
+      <Parameter Name="V_MANV" Mode="In" Type="String" />
+      <Parameter Name="V_TONGTG" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="SP_CAPNHATLOAISANPHAM">
+      <Parameter Name="V_MALOAI" Mode="In" Type="String" />
+      <Parameter Name="V_TENLOAI" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_CAPNHATPHIEUNHAP">
+      <Parameter Name="V_MAPN" Mode="In" Type="String" />
+      <Parameter Name="V_NGAYNHAP" Mode="In" Type="DateTime" />
+      <Parameter Name="V_MANCC" Mode="In" Type="String" />
+      <Parameter Name="V_MANV" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_CAPNHATSANPHAM">
+      <Parameter Name="V_MASP" Mode="In" Type="String" />
+      <Parameter Name="V_TENSP" Mode="In" Type="String" />
+      <Parameter Name="V_SOLUONG" Mode="In" Type="Decimal" />
+      <Parameter Name="V_DONVITINH" Mode="In" Type="String" />
+      <Parameter Name="V_DONGIA" Mode="In" Type="Decimal" />
+      <Parameter Name="V_LOAISP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_CAPNHAT_DOANHSO_KHACHHANG" />
+    <FunctionImport Name="SP_LAYSPBANDUOCNHIEUNHAT">
+      <Parameter Name="X" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="SP_THEMCTHD">
+      <Parameter Name="V_SOHD" Mode="In" Type="String" />
+      <Parameter Name="V_MASP" Mode="In" Type="String" />
+      <Parameter Name="V_SOLUONG" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="SP_THEMCTPN">
+      <Parameter Name="V_MAPN" Mode="In" Type="String" />
+      <Parameter Name="V_MASP" Mode="In" Type="String" />
+      <Parameter Name="V_SLNHAP" Mode="In" Type="Decimal" />
+      <Parameter Name="V_DONGIANHAP" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="SP_THEMHOADON">
+      <Parameter Name="V_SOHD" Mode="In" Type="String" />
+      <Parameter Name="V_MAKH" Mode="In" Type="String" />
+      <Parameter Name="V_MANV" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_THEMLOAISANPHAM">
+      <Parameter Name="V_MALOAI" Mode="In" Type="String" />
+      <Parameter Name="V_TENLOAI" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_THEMPHIEUNHAP">
+      <Parameter Name="V_MAPN" Mode="In" Type="String" />
+      <Parameter Name="V_MANCC" Mode="In" Type="String" />
+      <Parameter Name="V_MANV" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_THEMSANPHAM">
+      <Parameter Name="V_MASP" Mode="In" Type="String" />
+      <Parameter Name="V_TENSP" Mode="In" Type="String" />
+      <Parameter Name="V_SOLUONG" Mode="In" Type="Decimal" />
+      <Parameter Name="V_DONVITINH" Mode="In" Type="String" />
+      <Parameter Name="V_DONGIA" Mode="In" Type="Decimal" />
+      <Parameter Name="V_LOAISP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_TINHLAIXUATCUASANPHAM" />
+    <FunctionImport Name="SP_UPDATEDONGIACTHD" />
+    <FunctionImport Name="SP_UPDATETONGTGHOADON" />
+    <FunctionImport Name="SP_XOACTHD">
+      <Parameter Name="V_SOHD" Mode="In" Type="String" />
+      <Parameter Name="V_MASP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_XOACTPN">
+      <Parameter Name="V_MAPN" Mode="In" Type="String" />
+      <Parameter Name="V_MASP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_XOAHOADON">
+      <Parameter Name="V_SOHD" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_XOALOAISANPHAM">
+      <Parameter Name="V_MALOAI" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_XOAPHIEUNHAP">
+      <Parameter Name="V_MAPN" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_XOASANPHAM">
+      <Parameter Name="V_MASP" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+</Schema>

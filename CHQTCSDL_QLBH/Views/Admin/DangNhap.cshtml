@@ -1,0 +1,42 @@
+﻿
+@{
+    Layout = "~/Views/Shared/Lay_out_Admin.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8" />
+    <title>Đăng nhập</title>
+    <link href="~/Content/reset.css" rel="stylesheet" />
+    <link href="~/Content/structure.css" rel="stylesheet" />
+</head>
+<body>
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-danger" style="text-align:center">@TempData["Message"]</div>
+    }
+    @using (Html.BeginForm("DangNhap", "Admin", FormMethod.Post, new { @class = "box login" }))
+    {
+        @Html.ValidationSummary(true)
+        <fieldset class="boxBody">
+            <label>Tài khoản</label>
+            <input name="TAIKHOAN" type="text" tabindex="1" placeholder="Tài khoản..."
+                   required>
+            <label>
+                <a href="#" class="rLink" tabindex="5">
+                    Quên mật khẩu?
+                </a>Mật khẩu
+            </label>
+            <input name="MATKHAU" type="password" tabindex="2" placeholder="Mât khẩu..."
+                   required>
+        </fieldset>
+        <footer style="height:100%">
+            <input type="submit" class="btnLogin" value="Đăng nhập" tabindex="4" style="margin-bottom:10px">
+        </footer>
+    }
+
+</body>
+</html>

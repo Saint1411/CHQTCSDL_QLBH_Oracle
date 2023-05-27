@@ -1,0 +1,473 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CTHD">
+    <Key>
+      <PropertyRef Name="SOHD" />
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="SOHD" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MASP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="DONGIA" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="SOLUONG" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="SANPHAM" Relationship="Self.CTHD_SANPHAM_FK" FromRole="CTHD" ToRole="SANPHAM" />
+    <NavigationProperty Name="HOADON" Relationship="Model.CTHD_HOADON_FK" FromRole="CTHD" ToRole="HOADON" />
+  </EntityType>
+  <EntityType Name="CTPN">
+    <Key>
+      <PropertyRef Name="MAPN" />
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MAPN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MASP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="SLNHAP" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DONGIANHAP" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="SANPHAM" Relationship="Self.CTPN_FK1" FromRole="CTPN" ToRole="SANPHAM" />
+    <NavigationProperty Name="PHIEUNHAP" Relationship="Self.CTPN_PHIEUNHAP" FromRole="CTPN" ToRole="PHIEUNHAP" />
+  </EntityType>
+  <EntityType Name="KHACHHANG">
+    <Key>
+      <PropertyRef Name="MAKH" />
+    </Key>
+    <Property Name="MAKH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SODT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DOANHSO" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="DIEMTICHLUY" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="HOADONs" Relationship="Model.HOADON_KHACHHANG_FK" FromRole="KHACHHANG" ToRole="HOADON" />
+  </EntityType>
+  <EntityType Name="LOAISANPHAM">
+    <Key>
+      <PropertyRef Name="MALOAI" />
+    </Key>
+    <Property Name="MALOAI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENLOAI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="SANPHAMs" Relationship="Self.SANPHAM_LOAISP_FK" FromRole="LOAISANPHAM" ToRole="SANPHAM" />
+  </EntityType>
+  <EntityType Name="NHACUNGCAP">
+    <Key>
+      <PropertyRef Name="MANCC" />
+    </Key>
+    <Property Name="MANCC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENNCC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SDT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="QUOCGIA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="PHIEUNHAPs" Relationship="Self.PHIEUNHAP_NHACC" FromRole="NHACUNGCAP" ToRole="PHIEUNHAP" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NGAYSINH" Type="DateTime" />
+    <Property Name="GIOITINH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="SDT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LUONG" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="NGAYLV" Type="DateTime" />
+    <NavigationProperty Name="PHIEUNHAPs" Relationship="Self.PHIEUNHAP_NHANVIEN" FromRole="NHANVIEN" ToRole="PHIEUNHAP" />
+    <NavigationProperty Name="HOADONs" Relationship="Model.HOADON_NHANVIEN_FK" FromRole="NHANVIEN" ToRole="HOADON" />
+  </EntityType>
+  <EntityType Name="PHIEUNHAP">
+    <Key>
+      <PropertyRef Name="MAPN" />
+    </Key>
+    <Property Name="MAPN" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NGAYNHAP" Type="DateTime" />
+    <Property Name="MANCC" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MANV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CTPNs" Relationship="Self.CTPN_PHIEUNHAP" FromRole="PHIEUNHAP" ToRole="CTPN" />
+    <NavigationProperty Name="NHACUNGCAP" Relationship="Self.PHIEUNHAP_NHACC" FromRole="PHIEUNHAP" ToRole="NHACUNGCAP" />
+    <NavigationProperty Name="NHANVIEN" Relationship="Self.PHIEUNHAP_NHANVIEN" FromRole="PHIEUNHAP" ToRole="NHANVIEN" />
+  </EntityType>
+  <EntityType Name="QUANTRI">
+    <Key>
+      <PropertyRef Name="MAQT" />
+    </Key>
+    <Property Name="MAQT" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TAIKHOAN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="MATKHAU" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="VAITRO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="SANPHAM">
+    <Key>
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MASP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENSP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SLTON" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DVT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DONGIA" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="LOAISP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CTHDs" Relationship="Self.CTHD_SANPHAM_FK" FromRole="SANPHAM" ToRole="CTHD" />
+    <NavigationProperty Name="CTPNs" Relationship="Self.CTPN_FK1" FromRole="SANPHAM" ToRole="CTPN" />
+    <NavigationProperty Name="LOAISANPHAM" Relationship="Self.SANPHAM_LOAISP_FK" FromRole="SANPHAM" ToRole="LOAISANPHAM" />
+  </EntityType>
+  <Association Name="CTHD_SANPHAM_FK">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="MASP" />
+      </Principal>
+      <Dependent Role="CTHD">
+        <PropertyRef Name="MASP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CTPN_FK1">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CTPN" Type="Self.CTPN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="MASP" />
+      </Principal>
+      <Dependent Role="CTPN">
+        <PropertyRef Name="MASP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CTPN_PHIEUNHAP">
+    <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="CTPN" Type="Self.CTPN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHIEUNHAP">
+        <PropertyRef Name="MAPN" />
+      </Principal>
+      <Dependent Role="CTPN">
+        <PropertyRef Name="MAPN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SANPHAM_LOAISP_FK">
+    <End Role="LOAISANPHAM" Type="Self.LOAISANPHAM" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAISANPHAM">
+        <PropertyRef Name="MALOAI" />
+      </Principal>
+      <Dependent Role="SANPHAM">
+        <PropertyRef Name="LOAISP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PHIEUNHAP_NHACC">
+    <End Role="NHACUNGCAP" Type="Self.NHACUNGCAP" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHACUNGCAP">
+        <PropertyRef Name="MANCC" />
+      </Principal>
+      <Dependent Role="PHIEUNHAP">
+        <PropertyRef Name="MANCC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PHIEUNHAP_NHANVIEN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="PHIEUNHAP">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CTHDs" EntityType="Self.CTHD" />
+    <EntitySet Name="CTPNs" EntityType="Self.CTPN" />
+    <EntitySet Name="KHACHHANGs" EntityType="Self.KHACHHANG" />
+    <EntitySet Name="LOAISANPHAMs" EntityType="Self.LOAISANPHAM" />
+    <EntitySet Name="NHACUNGCAPs" EntityType="Self.NHACUNGCAP" />
+    <EntitySet Name="NHANVIENs" EntityType="Self.NHANVIEN" />
+    <EntitySet Name="PHIEUNHAPs" EntityType="Self.PHIEUNHAP" />
+    <EntitySet Name="QUANTRIs" EntityType="Self.QUANTRI" />
+    <EntitySet Name="SANPHAMs" EntityType="Self.SANPHAM" />
+    <AssociationSet Name="CTHD_SANPHAM_FK" Association="Self.CTHD_SANPHAM_FK">
+      <End Role="SANPHAM" EntitySet="SANPHAMs" />
+      <End Role="CTHD" EntitySet="CTHDs" />
+    </AssociationSet>
+    <AssociationSet Name="CTPN_FK1" Association="Self.CTPN_FK1">
+      <End Role="SANPHAM" EntitySet="SANPHAMs" />
+      <End Role="CTPN" EntitySet="CTPNs" />
+    </AssociationSet>
+    <AssociationSet Name="CTPN_PHIEUNHAP" Association="Self.CTPN_PHIEUNHAP">
+      <End Role="PHIEUNHAP" EntitySet="PHIEUNHAPs" />
+      <End Role="CTPN" EntitySet="CTPNs" />
+    </AssociationSet>
+    <AssociationSet Name="SANPHAM_LOAISP_FK" Association="Self.SANPHAM_LOAISP_FK">
+      <End Role="LOAISANPHAM" EntitySet="LOAISANPHAMs" />
+      <End Role="SANPHAM" EntitySet="SANPHAMs" />
+    </AssociationSet>
+    <AssociationSet Name="PHIEUNHAP_NHACC" Association="Self.PHIEUNHAP_NHACC">
+      <End Role="NHACUNGCAP" EntitySet="NHACUNGCAPs" />
+      <End Role="PHIEUNHAP" EntitySet="PHIEUNHAPs" />
+    </AssociationSet>
+    <AssociationSet Name="PHIEUNHAP_NHANVIEN" Association="Self.PHIEUNHAP_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="PHIEUNHAP" EntitySet="PHIEUNHAPs" />
+    </AssociationSet>
+    <FunctionImport Name="SP_LAYSPBANDUOCNHIEUNHAT">
+      <Parameter Name="X" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="UPDATE_CTHD_DONGIA" />
+    <FunctionImport Name="UPDATE_HOADON_TONGTG" />
+    <FunctionImport Name="SP_CAPNHATSANPHAM">
+      <Parameter Name="V_MASP" Mode="In" Type="String" />
+      <Parameter Name="V_TENSP" Mode="In" Type="String" />
+      <Parameter Name="V_SOLUONG" Mode="In" Type="Decimal" />
+      <Parameter Name="V_DONVITINH" Mode="In" Type="String" />
+      <Parameter Name="V_DONGIA" Mode="In" Type="Decimal" />
+      <Parameter Name="V_LOAISP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_THEMSANPHAM">
+      <Parameter Name="V_TENSP" Mode="In" Type="String" />
+      <Parameter Name="V_SOLUONG" Mode="In" Type="Decimal" />
+      <Parameter Name="V_DONVITINH" Mode="In" Type="String" />
+      <Parameter Name="V_DONGIA" Mode="In" Type="Decimal" />
+      <Parameter Name="V_LOAISP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_TINHLAIXUATCUASANPHAM" />
+    <FunctionImport Name="SP_UPDATEDONGIACTHD" />
+    <FunctionImport Name="SP_UPDATETONGTGHOADON" />
+    <FunctionImport Name="SP_XOASANPHAM">
+      <Parameter Name="V_MASP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_CAPNHATCTHD">
+      <Parameter Name="V_SOHD" Mode="In" Type="String" />
+      <Parameter Name="V_MASP" Mode="In" Type="String" />
+      <Parameter Name="V_SOLUONG_MOI" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="SP_CAPNHATCTPN">
+      <Parameter Name="V_MAPN" Mode="In" Type="String" />
+      <Parameter Name="V_MASP" Mode="In" Type="String" />
+      <Parameter Name="V_SOLUONG_MOI" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="SP_CAPNHATHOADON">
+      <Parameter Name="V_SOHD" Mode="In" Type="String" />
+      <Parameter Name="V_NGAY" Mode="In" Type="DateTime" />
+      <Parameter Name="V_MAKH" Mode="In" Type="String" />
+      <Parameter Name="V_MANV" Mode="In" Type="String" />
+      <Parameter Name="V_TONGTG" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="SP_CAPNHATLOAISANPHAM">
+      <Parameter Name="V_MALOAI" Mode="In" Type="String" />
+      <Parameter Name="V_TENLOAI" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_CAPNHATPHIEUNHAP">
+      <Parameter Name="V_MAPN" Mode="In" Type="String" />
+      <Parameter Name="V_NGAYNHAP" Mode="In" Type="DateTime" />
+      <Parameter Name="V_MANCC" Mode="In" Type="String" />
+      <Parameter Name="V_MANV" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_CAPNHAT_DOANHSO_KHACHHANG" />
+    <FunctionImport Name="SP_THEMCTHD">
+      <Parameter Name="V_SOHD" Mode="In" Type="String" />
+      <Parameter Name="V_MASP" Mode="In" Type="String" />
+      <Parameter Name="V_SOLUONG" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="SP_THEMCTPN">
+      <Parameter Name="V_MAPN" Mode="In" Type="String" />
+      <Parameter Name="V_MASP" Mode="In" Type="String" />
+      <Parameter Name="V_SLNHAP" Mode="In" Type="Decimal" />
+      <Parameter Name="V_DONGIANHAP" Mode="In" Type="Decimal" />
+    </FunctionImport>
+    <FunctionImport Name="SP_THEMHOADON">
+      <Parameter Name="V_MAKH" Mode="In" Type="String" />
+      <Parameter Name="V_MANV" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_THEMLOAISANPHAM">
+      <Parameter Name="V_MALOAI" Mode="In" Type="String" />
+      <Parameter Name="V_TENLOAI" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_THEMPHIEUNHAP">
+      <Parameter Name="V_MANCC" Mode="In" Type="String" />
+      <Parameter Name="V_MANV" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_XOACTHD">
+      <Parameter Name="V_SOHD" Mode="In" Type="String" />
+      <Parameter Name="V_MASP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_XOACTPN">
+      <Parameter Name="V_MAPN" Mode="In" Type="String" />
+      <Parameter Name="V_MASP" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_XOAHOADON">
+      <Parameter Name="V_SOHD" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_XOALOAISANPHAM">
+      <Parameter Name="V_MALOAI" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_XOAPHIEUNHAP">
+      <Parameter Name="V_MAPN" Mode="In" Type="String" />
+    </FunctionImport>
+    <EntitySet Name="VIEW_DANHSACHHOADON" EntityType="Model.VIEW_DANHSACHHOADON" />
+    <EntitySet Name="VIEW_DANHSACHPHIEUNHAP" EntityType="Model.VIEW_DANHSACHPHIEUNHAP" />
+    <EntitySet Name="VIEW_DANHSACHSANPHAM" EntityType="Model.VIEW_DANHSACHSANPHAM" />
+    <EntitySet Name="VIEW_HOATDONGCUANV" EntityType="Model.VIEW_HOATDONGCUANV" />
+    <EntitySet Name="VIEW_LAIXUATCUASANPHAM" EntityType="Model.VIEW_LAIXUATCUASANPHAM" />
+    <EntitySet Name="VIEW_DS_KHACHHANG" EntityType="Model.VIEW_DS_KHACHHANG" />
+    <EntitySet Name="HOADONs" EntityType="Model.HOADON" />
+    <AssociationSet Name="CTHD_HOADON_FK" Association="Model.CTHD_HOADON_FK">
+      <End Role="HOADON" EntitySet="HOADONs" />
+      <End Role="CTHD" EntitySet="CTHDs" />
+    </AssociationSet>
+    <AssociationSet Name="HOADON_KHACHHANG_FK" Association="Model.HOADON_KHACHHANG_FK">
+      <End Role="KHACHHANG" EntitySet="KHACHHANGs" />
+      <End Role="HOADON" EntitySet="HOADONs" />
+    </AssociationSet>
+    <AssociationSet Name="HOADON_NHANVIEN_FK" Association="Model.HOADON_NHANVIEN_FK">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="HOADON" EntitySet="HOADONs" />
+    </AssociationSet>
+    <FunctionImport Name="SP_LAYDANHSACH_CTHD">
+      <Parameter Name="V_SOHD" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_MAHOAMATKHAU">
+      <Parameter Name="P_PASSWORD" Mode="In" Type="String" />
+      <Parameter Name="P_HASHEDPASSWORD" Mode="Out" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <EntityType Name="VIEW_DANHSACHHOADON">
+    <Key>
+      <PropertyRef Name="SOHD" />
+    </Key>
+    <Property Name="SOHD" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NGAY" Type="DateTime" />
+    <Property Name="HOTENKH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="HOTENNV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TONGTG" Type="Decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="VIEW_DANHSACHPHIEUNHAP">
+    <Key>
+      <PropertyRef Name="MAPN" />
+    </Key>
+    <Property Name="MAPN" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NGAYNHAP" Type="DateTime" />
+    <Property Name="TENNCC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TENNV" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TONGTIENNHAP" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="VIEW_DANHSACHSANPHAM">
+    <Key>
+      <PropertyRef Name="MASP" />
+      <PropertyRef Name="LOAISP" />
+    </Key>
+    <Property Name="MASP" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TENSP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SLNHAP" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="SLTON" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="SLBAN" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DVT" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LOAISP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DONGIA" Type="Decimal" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="VIEW_HOATDONGCUANV">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="GIOITINH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="SDT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LUONG" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="SOHDDALAP" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="SOPHIEUDALAP" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="LOINHUAN" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="VIEW_LAIXUATCUASANPHAM">
+    <Key>
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MASP" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TENSP" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SOLUONG" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="LAIXUAT" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="VIEW_DS_KHACHHANG">
+    <Key>
+      <PropertyRef Name="MAKH" />
+    </Key>
+    <Property Name="MAKH" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="HOTEN" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DIACHI" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="SODT" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SOHDSOHUU" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="DOANHSO" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="DIEMTICHLUY" Type="Decimal" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="HOADON">
+    <Key>
+      <PropertyRef Name="SOHD" />
+    </Key>
+    <Property Name="SOHD" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NGAY" Type="DateTime" />
+    <Property Name="MAKH" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="MANV" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="TONGTG" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="CTHDs" Relationship="Model.CTHD_HOADON_FK" FromRole="HOADON" ToRole="CTHD" />
+    <NavigationProperty Name="KHACHHANG" Relationship="Model.HOADON_KHACHHANG_FK" FromRole="HOADON" ToRole="KHACHHANG" />
+    <NavigationProperty Name="NHANVIEN" Relationship="Model.HOADON_NHANVIEN_FK" FromRole="HOADON" ToRole="NHANVIEN" />
+  </EntityType>
+  <Association Name="CTHD_HOADON_FK">
+    <End Type="Model.HOADON" Role="HOADON" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Model.CTHD" Role="CTHD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOADON">
+        <PropertyRef Name="SOHD" />
+      </Principal>
+      <Dependent Role="CTHD">
+        <PropertyRef Name="SOHD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HOADON_KHACHHANG_FK">
+    <End Type="Model.KHACHHANG" Role="KHACHHANG" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Model.HOADON" Role="HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKH" />
+      </Principal>
+      <Dependent Role="HOADON">
+        <PropertyRef Name="MAKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HOADON_NHANVIEN_FK">
+    <End Type="Model.NHANVIEN" Role="NHANVIEN" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Type="Model.HOADON" Role="HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="HOADON">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

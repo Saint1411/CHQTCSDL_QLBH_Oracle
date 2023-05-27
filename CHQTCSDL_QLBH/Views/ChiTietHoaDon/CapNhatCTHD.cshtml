@@ -1,0 +1,60 @@
+﻿@model CHQTCSDL_QLBH.Models.CTHD
+
+@{
+    ViewBag.Title = "Cập nhật chi tiết hóa đơn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Cập nhật chi tiết hóa đơn</h2>
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">@TempData["Message"]</div>
+}
+@if (TempData["Failed"] != null)
+{
+    <div class="alert alert-danger">@TempData["Failed"]</div>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.SOHD, "Số hóa đơn", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" value="@ViewBag.HoaDon" class="form-control" disabled />
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.MASP, "Tên sản phẩm", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="text" value="@ViewBag.SanPham" class="form-control" disabled />
+                @Html.ValidationMessageFor(model => model.MASP, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.SOLUONG, "Số lượng", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.SOLUONG, new { htmlAttributes = new { @class = "form-control", @min = 1, @type = "number" } })
+                @Html.ValidationMessageFor(model => model.SOLUONG, "", new { @class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Cập nhật" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <a href="~/ChiTietHoaDon/DanhSachCTHD?SOHD=@ViewBag.HoaDon" class="btn btn-warning">Quay về</a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

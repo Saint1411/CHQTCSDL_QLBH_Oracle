@@ -1,0 +1,78 @@
+﻿@model IEnumerable<CHQTCSDL_QLBH.Models.NHANVIEN>
+
+@{
+    ViewBag.Title = "Danh sách nhân viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh Sách Nhân Viên</h2>
+
+<a href="~/NhanVien/ThemNhanVien" class="btn btn-info" style="margin-bottom: 12px">
+    <i class="far fa-user"></i> Thêm
+</a>
+<p style="float:right">
+    Số nhân viên: <span style="color:royalblue">@ViewBag.SoNhanVien</span>  <i class="fas fa-user-circle"></i>
+</p>
+<a href="~/NhanVien/HoatDongNhanVien" class="btn btn-warning" style="margin-bottom: 12px">
+    <i class="fal fa-person-dolly"></i> Hoạt động
+</a>
+<table class="table table-hover">
+    <tr>
+        <th>
+            Mã nhân viên
+        </th>
+        <th>
+            Họ tên
+        </th>
+        <th>
+            Ngày sinh
+        </th>
+        <th>
+            Ngày làm việc
+        </th>
+        <th>
+            Giới tính
+        </th>
+        <th>
+            Số điện thoại
+        </th>
+        <th>
+            Lương
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MANV)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HOTEN)
+        </td>
+        <td>
+            @item.NGAYSINH.Value.ToString("dd/MM/yyyy").Replace(' ', 'T')
+        </td>
+        <td>
+            @item.NGAYLV.Value.ToString("dd/MM/yyyy").Replace(' ', 'T')
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GIOITINH)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SDT)
+        </td>
+        <td>
+            @{
+                string luong = item.LUONG?.ToString("#,##0") ?? "0";
+            }
+            @luong ₫
+        </td>
+        <td>
+            <a href="@Url.Action("CapNhatNhanVien", new { MANV = item.MANV })" class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i></a>
+            <a href="@Url.Action("ChiTietNhanVien", new { MANV = item.MANV })" class="btn btn-success"><i class='fas fa-book-open'></i></a>
+        </td>
+    </tr>
+}
+
+</table>

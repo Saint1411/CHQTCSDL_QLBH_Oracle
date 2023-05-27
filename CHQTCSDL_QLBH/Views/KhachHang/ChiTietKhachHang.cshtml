@@ -1,0 +1,80 @@
+﻿@model CHQTCSDL_QLBH.Models.VIEW_DS_KHACHHANG
+
+@{
+    ViewBag.Title = "Chi tiết khách hàng";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Chi Tiết Khách Hàng</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã khách hàng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MAKH)
+        </dd>
+
+        <dt>
+            Họ tên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HOTEN)
+        </dd>
+
+        <dt>
+            Địa chỉ
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIACHI)
+        </dd>
+
+        <dt>
+            Số điện thoại
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SODT)
+        </dd>
+
+        <dt>
+            Email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EMAIL)
+        </dd>
+
+        <dt>
+            Số hóa đơn
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOHDSOHUU)
+        </dd>
+
+        <dt>
+            Doanh số
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DOANHSO)
+        </dd>
+        <dt>
+            Điểm tích lũy
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DIEMTICHLUY)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "CapNhatKhachHang", new { MAKH = Model.MAKH }) |
+    @Html.ActionLink("Quay về", "DanhSachKhachHang")
+</p>

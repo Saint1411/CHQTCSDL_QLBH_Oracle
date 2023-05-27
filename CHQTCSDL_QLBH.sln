@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31112.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CHQTCSDL_QLBH", "CHQTCSDL_QLBH\CHQTCSDL_QLBH.csproj", "{9657E0DF-07BB-4F89-A45F-763E9D535764}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9657E0DF-07BB-4F89-A45F-763E9D535764}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9657E0DF-07BB-4F89-A45F-763E9D535764}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9657E0DF-07BB-4F89-A45F-763E9D535764}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9657E0DF-07BB-4F89-A45F-763E9D535764}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {87CBE387-6D42-44E4-9CBB-0F176E2E7A6F}
+	EndGlobalSection
+EndGlobal

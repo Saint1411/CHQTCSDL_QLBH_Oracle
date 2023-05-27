@@ -1,0 +1,64 @@
+﻿@model IEnumerable<CHQTCSDL_QLBH.Models.VIEW_DANHSACHHOADON>
+
+@{
+    ViewBag.Title = "Danh sách hóa đơn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>DANH SÁCH HÓA ĐƠN</h2>
+
+<a href="~/HoaDon/ThemHoaDon" class="btn btn-success" style="margin-bottom: 12px">Thêm hóa đơn</a>
+<p style="float:right; color:red">
+    <span style="color:black">Tổng trị giá: </span> @ViewBag.TongTriGia.ToString("#,##0") ₫
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Số hóa đơn
+        </th>
+        <th>
+            Ngày lập
+        </th>
+        <th>
+            Tên khách hàng
+        </th>
+        <th>
+            Nhân viên lập
+        </th>
+        <th>
+            Tổng trị giá
+        </th>
+        <th>#</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a href="~/ChiTietHoaDon/DanhSachCTHD?SOHD=@item.SOHD" class="btn btn-warning">
+                    @Html.DisplayFor(modelItem => item.SOHD)
+                </a>
+            </td>
+            <td>
+                @item.NGAY.Value.ToString("dd/MM/yyyy").Replace(' ', 'T')
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HOTENKH)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HOTENNV)
+            </td>
+            <td>
+                @{
+                    string tongTG = item.TONGTG?.ToString("#,##0") ?? "0";
+                }
+                @tongTG ₫
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "CapNhatHoaDon", new { SOHD = item.SOHD }) |
+                @Html.ActionLink("Xóa", "XoaHoaDon", new { SOHD = item.SOHD })
+            </td>
+        </tr>
+    }
+
+</table>

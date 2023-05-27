@@ -1,0 +1,59 @@
+﻿@model IEnumerable<CHQTCSDL_QLBH.Models.CTPN>
+
+@{
+    ViewBag.Title = "Chi tiết phiếu nhập";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách chi tiết phiếu nhập: <span style="color:red">@ViewBag.PhieuNhap</span></h2>
+
+<p>
+    <a class="btn btn-info" href="@Url.Action("ThemCTPN", "ChiTietPhieuNhap", new { MAPN = ViewBag.PhieuNhap })">Thêm mới</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Mã phiếu nhập
+        </th>
+        <th>
+            Sản phẩm
+        </th>
+        <th>
+            Số lượng
+        </th>
+        <th>
+            Đơn giá nhập
+        </th>
+        <th>
+            Nhà cung cấp
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MAPN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SANPHAM.TENSP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SLNHAP)
+            </td>
+            <td>
+                @item.DONGIANHAP.Value.ToString("#,##0") ₫
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PHIEUNHAP.NHACUNGCAP.TENNCC)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "CapNhatCTPN", new { MAPN = item.MAPN, MASP = item.MASP }) |
+                @Html.ActionLink("Xóa", "XoaCTPN", new { MAPN = item.MAPN, MASP = item.MASP })
+            </td>
+        </tr>
+    }
+
+</table>
+<a href="~/PhieuNhap/DanhSachPhieuNhap" class="btn btn-warning">Quay về</a>

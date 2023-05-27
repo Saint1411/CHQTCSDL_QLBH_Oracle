@@ -1,0 +1,511 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="18.0" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CTHD">
+    <Key>
+      <PropertyRef Name="SOHD" />
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="SOHD" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="MASP" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="DONGIA" Type="number" Precision="10" Scale="2" />
+    <Property Name="SOLUONG" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="CTPN">
+    <Key>
+      <PropertyRef Name="MAPN" />
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MAPN" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="MASP" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="SLNHAP" Type="number" Precision="38" Scale="0" />
+    <Property Name="DONGIANHAP" Type="number" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="HOADON">
+    <Key>
+      <PropertyRef Name="SOHD" />
+    </Key>
+    <Property Name="SOHD" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="NGAY" Type="date" />
+    <Property Name="MAKH" Type="varchar2" MaxLength="10" />
+    <Property Name="MANV" Type="varchar2" MaxLength="10" />
+    <Property Name="TONGTG" Type="number" Precision="10" Scale="2" />
+  </EntityType>
+  <EntityType Name="KHACHHANG">
+    <Key>
+      <PropertyRef Name="MAKH" />
+    </Key>
+    <Property Name="MAKH" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="HOTEN" Type="varchar2" MaxLength="50" />
+    <Property Name="DIACHI" Type="varchar2" MaxLength="100" />
+    <Property Name="SODT" Type="varchar2" MaxLength="12" />
+    <Property Name="EMAIL" Type="varchar2" MaxLength="50" />
+    <Property Name="DOANHSO" Type="number" Precision="10" Scale="2" />
+    <Property Name="DIEMTICHLUY" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="LOAISANPHAM">
+    <Key>
+      <PropertyRef Name="MALOAI" />
+    </Key>
+    <Property Name="MALOAI" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="TENLOAI" Type="varchar2" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NHACUNGCAP">
+    <Key>
+      <PropertyRef Name="MANCC" />
+    </Key>
+    <Property Name="MANCC" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="TENNCC" Type="varchar2" MaxLength="50" />
+    <Property Name="DIACHI" Type="varchar2" MaxLength="100" />
+    <Property Name="SDT" Type="varchar2" MaxLength="12" />
+    <Property Name="QUOCGIA" Type="varchar2" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="HOTEN" Type="varchar2" MaxLength="50" />
+    <Property Name="NGAYSINH" Type="date" />
+    <Property Name="GIOITINH" Type="varchar2" MaxLength="10" />
+    <Property Name="SDT" Type="varchar2" MaxLength="12" />
+    <Property Name="DIACHI" Type="varchar2" MaxLength="100" />
+    <Property Name="LUONG" Type="number" Precision="10" Scale="2" />
+    <Property Name="NGAYLV" Type="date" />
+  </EntityType>
+  <EntityType Name="PHIEUNHAP">
+    <Key>
+      <PropertyRef Name="MAPN" />
+    </Key>
+    <Property Name="MAPN" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="NGAYNHAP" Type="date" />
+    <Property Name="MANCC" Type="varchar2" MaxLength="10" />
+    <Property Name="MANV" Type="varchar2" MaxLength="10" />
+  </EntityType>
+  <EntityType Name="QUANTRI">
+    <Key>
+      <PropertyRef Name="MAQT" />
+    </Key>
+    <Property Name="MAQT" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="TAIKHOAN" Type="varchar2" MaxLength="20" Nullable="false" />
+    <Property Name="MATKHAU" Type="varchar2" MaxLength="200" Nullable="false" />
+    <Property Name="VAITRO" Type="varchar2" MaxLength="20" />
+  </EntityType>
+  <EntityType Name="SANPHAM">
+    <Key>
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MASP" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="TENSP" Type="varchar2" MaxLength="50" />
+    <Property Name="SLTON" Type="number" Precision="38" Scale="0" />
+    <Property Name="DVT" Type="varchar2" MaxLength="20" />
+    <Property Name="DONGIA" Type="number" Precision="10" Scale="2" />
+    <Property Name="LOAISP" Type="varchar2" MaxLength="10" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CHQTCSDL.VIEW_DANHSACHHOADON' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VIEW_DANHSACHHOADON">
+    <Key>
+      <PropertyRef Name="SOHD" />
+    </Key>
+    <Property Name="SOHD" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="NGAY" Type="date" />
+    <Property Name="HOTENKH" Type="varchar2" MaxLength="50" />
+    <Property Name="HOTENNV" Type="varchar2" MaxLength="50" />
+    <Property Name="TONGTG" Type="number" Precision="10" Scale="2" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CHQTCSDL.VIEW_DANHSACHPHIEUNHAP' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VIEW_DANHSACHPHIEUNHAP">
+    <Key>
+      <PropertyRef Name="MAPN" />
+    </Key>
+    <Property Name="MAPN" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="NGAYNHAP" Type="date" />
+    <Property Name="TONGTIENNHAP" Type="number" Precision="38" Scale="0" />
+    <Property Name="TENNCC" Type="varchar2" MaxLength="50" />
+    <Property Name="TENNV" Type="varchar2" MaxLength="50" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CHQTCSDL.VIEW_DANHSACHSANPHAM' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VIEW_DANHSACHSANPHAM">
+    <Key>
+      <PropertyRef Name="MASP" />
+      <PropertyRef Name="LOAISP" />
+    </Key>
+    <Property Name="MASP" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="TENSP" Type="varchar2" MaxLength="50" />
+    <Property Name="SLNHAP" Type="number" Precision="38" Scale="0" />
+    <Property Name="SLTON" Type="number" Precision="38" Scale="0" />
+    <Property Name="SLBAN" Type="number" Precision="38" Scale="0" />
+    <Property Name="DVT" Type="varchar2" MaxLength="20" />
+    <Property Name="DONGIA" Type="number" Precision="10" Scale="2" />
+    <Property Name="LOAISP" Type="varchar2" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CHQTCSDL.VIEW_DS_KHACHHANG' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VIEW_DS_KHACHHANG">
+    <Key>
+      <PropertyRef Name="MAKH" />
+    </Key>
+    <Property Name="MAKH" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="HOTEN" Type="varchar2" MaxLength="50" />
+    <Property Name="DIACHI" Type="varchar2" MaxLength="100" />
+    <Property Name="SODT" Type="varchar2" MaxLength="12" />
+    <Property Name="EMAIL" Type="varchar2" MaxLength="50" />
+    <Property Name="SOHDSOHUU" Type="number" Precision="38" Scale="0" />
+    <Property Name="DOANHSO" Type="number" Precision="10" Scale="2" />
+    <Property Name="DIEMTICHLUY" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CHQTCSDL.VIEW_HOATDONGCUANV' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VIEW_HOATDONGCUANV">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="HOTEN" Type="varchar2" MaxLength="50" />
+    <Property Name="GIOITINH" Type="varchar2" MaxLength="10" />
+    <Property Name="SDT" Type="varchar2" MaxLength="12" />
+    <Property Name="DIACHI" Type="varchar2" MaxLength="100" />
+    <Property Name="LUONG" Type="number" Precision="10" Scale="2" />
+    <Property Name="SOHDDALAP" Type="number" Precision="38" Scale="0" />
+    <Property Name="SOPHIEUDALAP" Type="number" Precision="38" Scale="0" />
+    <Property Name="LOINHUAN" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'CHQTCSDL.VIEW_LAIXUATCUASANPHAM' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="VIEW_LAIXUATCUASANPHAM">
+    <Key>
+      <PropertyRef Name="MASP" />
+    </Key>
+    <Property Name="MASP" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="TENSP" Type="varchar2" MaxLength="50" />
+    <Property Name="SOLUONG" Type="number" Precision="38" Scale="0" />
+    <Property Name="LAIXUAT" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <Association Name="CTHD_HOADON_FK">
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="1" />
+    <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HOADON">
+        <PropertyRef Name="SOHD" />
+      </Principal>
+      <Dependent Role="CTHD">
+        <PropertyRef Name="SOHD" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CTHD_SANPHAM_FK">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+    <End Role="CTHD" Type="Self.CTHD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="MASP" />
+      </Principal>
+      <Dependent Role="CTHD">
+        <PropertyRef Name="MASP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CTPN_FK1">
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="1" />
+    <End Role="CTPN" Type="Self.CTPN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SANPHAM">
+        <PropertyRef Name="MASP" />
+      </Principal>
+      <Dependent Role="CTPN">
+        <PropertyRef Name="MASP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CTPN_PHIEUNHAP">
+    <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="1" />
+    <End Role="CTPN" Type="Self.CTPN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHIEUNHAP">
+        <PropertyRef Name="MAPN" />
+      </Principal>
+      <Dependent Role="CTPN">
+        <PropertyRef Name="MAPN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HOADON_KHACHHANG_FK">
+    <End Role="KHACHHANG" Type="Self.KHACHHANG" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHACHHANG">
+        <PropertyRef Name="MAKH" />
+      </Principal>
+      <Dependent Role="HOADON">
+        <PropertyRef Name="MAKH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HOADON_NHANVIEN_FK">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="HOADON" Type="Self.HOADON" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="HOADON">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PHIEUNHAP_NHACC">
+    <End Role="NHACUNGCAP" Type="Self.NHACUNGCAP" Multiplicity="0..1" />
+    <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHACUNGCAP">
+        <PropertyRef Name="MANCC" />
+      </Principal>
+      <Dependent Role="PHIEUNHAP">
+        <PropertyRef Name="MANCC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PHIEUNHAP_NHANVIEN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="PHIEUNHAP" Type="Self.PHIEUNHAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="PHIEUNHAP">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="SANPHAM_LOAISP_FK">
+    <End Role="LOAISANPHAM" Type="Self.LOAISANPHAM" Multiplicity="0..1" />
+    <End Role="SANPHAM" Type="Self.SANPHAM" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOAISANPHAM">
+        <PropertyRef Name="MALOAI" />
+      </Principal>
+      <Dependent Role="SANPHAM">
+        <PropertyRef Name="LOAISP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="FUNC_MAHOAMATKHAU" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL" ReturnType="varchar2">
+    <Parameter Name="P_PASSWORD" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="SP_CAPNHATCTHD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL">
+    <Parameter Name="V_SOHD" Type="varchar2" Mode="In" />
+    <Parameter Name="V_MASP" Type="varchar2" Mode="In" />
+    <Parameter Name="V_SOLUONG_MOI" Type="number" Mode="In" />
+  </Function>
+  <Function Name="SP_CAPNHATCTPN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL">
+    <Parameter Name="V_MAPN" Type="varchar2" Mode="In" />
+    <Parameter Name="V_MASP" Type="varchar2" Mode="In" />
+    <Parameter Name="V_SOLUONG_MOI" Type="number" Mode="In" />
+  </Function>
+  <Function Name="SP_CAPNHATHOADON" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL">
+    <Parameter Name="V_SOHD" Type="varchar2" Mode="In" />
+    <Parameter Name="V_NGAY" Type="date" Mode="In" />
+    <Parameter Name="V_MAKH" Type="varchar2" Mode="In" />
+    <Parameter Name="V_MANV" Type="varchar2" Mode="In" />
+    <Parameter Name="V_TONGTG" Type="number" Mode="In" />
+  </Function>
+  <Function Name="SP_CAPNHATLOAISANPHAM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL">
+    <Parameter Name="V_MALOAI" Type="varchar2" Mode="In" />
+    <Parameter Name="V_TENLOAI" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="SP_CAPNHATPHIEUNHAP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL">
+    <Parameter Name="V_MAPN" Type="varchar2" Mode="In" />
+    <Parameter Name="V_NGAYNHAP" Type="date" Mode="In" />
+    <Parameter Name="V_MANCC" Type="varchar2" Mode="In" />
+    <Parameter Name="V_MANV" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="SP_CAPNHATSANPHAM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL">
+    <Parameter Name="V_MASP" Type="varchar2" Mode="In" />
+    <Parameter Name="V_TENSP" Type="varchar2" Mode="In" />
+    <Parameter Name="V_SOLUONG" Type="number" Mode="In" />
+    <Parameter Name="V_DONVITINH" Type="varchar2" Mode="In" />
+    <Parameter Name="V_DONGIA" Type="number" Mode="In" />
+    <Parameter Name="V_LOAISP" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="SP_CAPNHAT_DOANHSO_KHACHHANG" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL" />
+  <Function Name="SP_LAYDANHSACH_CTHD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL">
+    <Parameter Name="V_SOHD" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="SP_LAYSPBANDUOCNHIEUNHAT" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL">
+    <Parameter Name="X" Type="number" Mode="In" />
+  </Function>
+  <Function Name="SP_MAHOAMATKHAU" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL">
+    <Parameter Name="P_PASSWORD" Type="varchar2" Mode="In" />
+    <Parameter Name="P_HASHEDPASSWORD" Type="varchar2" Mode="Out" />
+  </Function>
+  <Function Name="SP_THEMCTHD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL">
+    <Parameter Name="V_SOHD" Type="varchar2" Mode="In" />
+    <Parameter Name="V_MASP" Type="varchar2" Mode="In" />
+    <Parameter Name="V_SOLUONG" Type="number" Mode="In" />
+  </Function>
+  <Function Name="SP_THEMCTPN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL">
+    <Parameter Name="V_MAPN" Type="varchar2" Mode="In" />
+    <Parameter Name="V_MASP" Type="varchar2" Mode="In" />
+    <Parameter Name="V_SLNHAP" Type="number" Mode="In" />
+    <Parameter Name="V_DONGIANHAP" Type="number" Mode="In" />
+  </Function>
+  <Function Name="SP_THEMHOADON" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL">
+    <Parameter Name="V_MAKH" Type="varchar2" Mode="In" />
+    <Parameter Name="V_MANV" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="SP_THEMLOAISANPHAM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL">
+    <Parameter Name="V_MALOAI" Type="varchar2" Mode="In" />
+    <Parameter Name="V_TENLOAI" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="SP_THEMPHIEUNHAP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL">
+    <Parameter Name="V_MANCC" Type="varchar2" Mode="In" />
+    <Parameter Name="V_MANV" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="SP_THEMSANPHAM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL">
+    <Parameter Name="V_TENSP" Type="varchar2" Mode="In" />
+    <Parameter Name="V_SOLUONG" Type="number" Mode="In" />
+    <Parameter Name="V_DONVITINH" Type="varchar2" Mode="In" />
+    <Parameter Name="V_DONGIA" Type="number" Mode="In" />
+    <Parameter Name="V_LOAISP" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="SP_TINHLAIXUATCUASANPHAM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL" />
+  <Function Name="SP_UPDATEDONGIACTHD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL" />
+  <Function Name="SP_UPDATETONGTGHOADON" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL" />
+  <Function Name="SP_XOACTHD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL">
+    <Parameter Name="V_SOHD" Type="varchar2" Mode="In" />
+    <Parameter Name="V_MASP" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="SP_XOACTPN" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL">
+    <Parameter Name="V_MAPN" Type="varchar2" Mode="In" />
+    <Parameter Name="V_MASP" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="SP_XOAHOADON" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL">
+    <Parameter Name="V_SOHD" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="SP_XOALOAISANPHAM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL">
+    <Parameter Name="V_MALOAI" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="SP_XOAPHIEUNHAP" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL">
+    <Parameter Name="V_MAPN" Type="varchar2" Mode="In" />
+  </Function>
+  <Function Name="SP_XOASANPHAM" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="CHQTCSDL">
+    <Parameter Name="V_MASP" Type="varchar2" Mode="In" />
+  </Function>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="CTHD" EntityType="Self.CTHD" Schema="CHQTCSDL" store:Type="Tables" />
+    <EntitySet Name="CTPN" EntityType="Self.CTPN" Schema="CHQTCSDL" store:Type="Tables" />
+    <EntitySet Name="HOADON" EntityType="Self.HOADON" Schema="CHQTCSDL" store:Type="Tables" />
+    <EntitySet Name="KHACHHANG" EntityType="Self.KHACHHANG" Schema="CHQTCSDL" store:Type="Tables" />
+    <EntitySet Name="LOAISANPHAM" EntityType="Self.LOAISANPHAM" Schema="CHQTCSDL" store:Type="Tables" />
+    <EntitySet Name="NHACUNGCAP" EntityType="Self.NHACUNGCAP" Schema="CHQTCSDL" store:Type="Tables" />
+    <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="CHQTCSDL" store:Type="Tables" />
+    <EntitySet Name="PHIEUNHAP" EntityType="Self.PHIEUNHAP" Schema="CHQTCSDL" store:Type="Tables" />
+    <EntitySet Name="QUANTRI" EntityType="Self.QUANTRI" Schema="CHQTCSDL" store:Type="Tables" />
+    <EntitySet Name="SANPHAM" EntityType="Self.SANPHAM" Schema="CHQTCSDL" store:Type="Tables" />
+    <EntitySet Name="VIEW_DANHSACHHOADON" EntityType="Self.VIEW_DANHSACHHOADON" store:Type="Views" store:Schema="CHQTCSDL">
+      <DefiningQuery>SELECT 
+"VIEW_DANHSACHHOADON"."SOHD" AS "SOHD", 
+"VIEW_DANHSACHHOADON"."NGAY" AS "NGAY", 
+"VIEW_DANHSACHHOADON"."HOTENKH" AS "HOTENKH", 
+"VIEW_DANHSACHHOADON"."HOTENNV" AS "HOTENNV", 
+"VIEW_DANHSACHHOADON"."TONGTG" AS "TONGTG"
+FROM "CHQTCSDL"."VIEW_DANHSACHHOADON" "VIEW_DANHSACHHOADON"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_DANHSACHPHIEUNHAP" EntityType="Self.VIEW_DANHSACHPHIEUNHAP" store:Type="Views" store:Schema="CHQTCSDL">
+      <DefiningQuery>SELECT 
+"VIEW_DANHSACHPHIEUNHAP"."MAPN" AS "MAPN", 
+"VIEW_DANHSACHPHIEUNHAP"."NGAYNHAP" AS "NGAYNHAP", 
+"VIEW_DANHSACHPHIEUNHAP"."TONGTIENNHAP" AS "TONGTIENNHAP", 
+"VIEW_DANHSACHPHIEUNHAP"."TENNCC" AS "TENNCC", 
+"VIEW_DANHSACHPHIEUNHAP"."TENNV" AS "TENNV"
+FROM "CHQTCSDL"."VIEW_DANHSACHPHIEUNHAP" "VIEW_DANHSACHPHIEUNHAP"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_DANHSACHSANPHAM" EntityType="Self.VIEW_DANHSACHSANPHAM" store:Type="Views" store:Schema="CHQTCSDL">
+      <DefiningQuery>SELECT 
+"VIEW_DANHSACHSANPHAM"."MASP" AS "MASP", 
+"VIEW_DANHSACHSANPHAM"."TENSP" AS "TENSP", 
+"VIEW_DANHSACHSANPHAM"."SLNHAP" AS "SLNHAP", 
+"VIEW_DANHSACHSANPHAM"."SLTON" AS "SLTON", 
+"VIEW_DANHSACHSANPHAM"."SLBAN" AS "SLBAN", 
+"VIEW_DANHSACHSANPHAM"."DVT" AS "DVT", 
+"VIEW_DANHSACHSANPHAM"."DONGIA" AS "DONGIA", 
+"VIEW_DANHSACHSANPHAM"."LOAISP" AS "LOAISP"
+FROM "CHQTCSDL"."VIEW_DANHSACHSANPHAM" "VIEW_DANHSACHSANPHAM"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_DS_KHACHHANG" EntityType="Self.VIEW_DS_KHACHHANG" store:Type="Views" store:Schema="CHQTCSDL">
+      <DefiningQuery>SELECT 
+"VIEW_DS_KHACHHANG"."MAKH" AS "MAKH", 
+"VIEW_DS_KHACHHANG"."HOTEN" AS "HOTEN", 
+"VIEW_DS_KHACHHANG"."DIACHI" AS "DIACHI", 
+"VIEW_DS_KHACHHANG"."SODT" AS "SODT", 
+"VIEW_DS_KHACHHANG"."EMAIL" AS "EMAIL", 
+"VIEW_DS_KHACHHANG"."SOHDSOHUU" AS "SOHDSOHUU", 
+"VIEW_DS_KHACHHANG"."DOANHSO" AS "DOANHSO", 
+"VIEW_DS_KHACHHANG"."DIEMTICHLUY" AS "DIEMTICHLUY"
+FROM "CHQTCSDL"."VIEW_DS_KHACHHANG" "VIEW_DS_KHACHHANG"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_HOATDONGCUANV" EntityType="Self.VIEW_HOATDONGCUANV" store:Type="Views" store:Schema="CHQTCSDL">
+      <DefiningQuery>SELECT 
+"VIEW_HOATDONGCUANV"."MANV" AS "MANV", 
+"VIEW_HOATDONGCUANV"."HOTEN" AS "HOTEN", 
+"VIEW_HOATDONGCUANV"."GIOITINH" AS "GIOITINH", 
+"VIEW_HOATDONGCUANV"."SDT" AS "SDT", 
+"VIEW_HOATDONGCUANV"."DIACHI" AS "DIACHI", 
+"VIEW_HOATDONGCUANV"."LUONG" AS "LUONG", 
+"VIEW_HOATDONGCUANV"."SOHDDALAP" AS "SOHDDALAP", 
+"VIEW_HOATDONGCUANV"."SOPHIEUDALAP" AS "SOPHIEUDALAP", 
+"VIEW_HOATDONGCUANV"."LOINHUAN" AS "LOINHUAN"
+FROM "CHQTCSDL"."VIEW_HOATDONGCUANV" "VIEW_HOATDONGCUANV"</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="VIEW_LAIXUATCUASANPHAM" EntityType="Self.VIEW_LAIXUATCUASANPHAM" store:Type="Views" store:Schema="CHQTCSDL">
+      <DefiningQuery>SELECT 
+"VIEW_LAIXUATCUASANPHAM"."MASP" AS "MASP", 
+"VIEW_LAIXUATCUASANPHAM"."TENSP" AS "TENSP", 
+"VIEW_LAIXUATCUASANPHAM"."SOLUONG" AS "SOLUONG", 
+"VIEW_LAIXUATCUASANPHAM"."LAIXUAT" AS "LAIXUAT"
+FROM "CHQTCSDL"."VIEW_LAIXUATCUASANPHAM" "VIEW_LAIXUATCUASANPHAM"</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="CTHD_HOADON_FK" Association="Self.CTHD_HOADON_FK">
+      <End Role="HOADON" EntitySet="HOADON" />
+      <End Role="CTHD" EntitySet="CTHD" />
+    </AssociationSet>
+    <AssociationSet Name="CTHD_SANPHAM_FK" Association="Self.CTHD_SANPHAM_FK">
+      <End Role="SANPHAM" EntitySet="SANPHAM" />
+      <End Role="CTHD" EntitySet="CTHD" />
+    </AssociationSet>
+    <AssociationSet Name="CTPN_FK1" Association="Self.CTPN_FK1">
+      <End Role="SANPHAM" EntitySet="SANPHAM" />
+      <End Role="CTPN" EntitySet="CTPN" />
+    </AssociationSet>
+    <AssociationSet Name="CTPN_PHIEUNHAP" Association="Self.CTPN_PHIEUNHAP">
+      <End Role="PHIEUNHAP" EntitySet="PHIEUNHAP" />
+      <End Role="CTPN" EntitySet="CTPN" />
+    </AssociationSet>
+    <AssociationSet Name="HOADON_KHACHHANG_FK" Association="Self.HOADON_KHACHHANG_FK">
+      <End Role="KHACHHANG" EntitySet="KHACHHANG" />
+      <End Role="HOADON" EntitySet="HOADON" />
+    </AssociationSet>
+    <AssociationSet Name="HOADON_NHANVIEN_FK" Association="Self.HOADON_NHANVIEN_FK">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="HOADON" EntitySet="HOADON" />
+    </AssociationSet>
+    <AssociationSet Name="PHIEUNHAP_NHACC" Association="Self.PHIEUNHAP_NHACC">
+      <End Role="NHACUNGCAP" EntitySet="NHACUNGCAP" />
+      <End Role="PHIEUNHAP" EntitySet="PHIEUNHAP" />
+    </AssociationSet>
+    <AssociationSet Name="PHIEUNHAP_NHANVIEN" Association="Self.PHIEUNHAP_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="PHIEUNHAP" EntitySet="PHIEUNHAP" />
+    </AssociationSet>
+    <AssociationSet Name="SANPHAM_LOAISP_FK" Association="Self.SANPHAM_LOAISP_FK">
+      <End Role="LOAISANPHAM" EntitySet="LOAISANPHAM" />
+      <End Role="SANPHAM" EntitySet="SANPHAM" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<CHQTCSDL_QLBH.Models.VIEW_LAIXUATCUASANPHAM>
+
+@{
+    ViewBag.Title = "Thống kê sản phẩm";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thống kê sản phẩm</h2>
+<p style="float:right; color:red">
+    <span style="color:black">Tổng lãi xuất: </span> @ViewBag.TongLaiXuat.ToString("#,##0") ₫
+</p>
+<table class="table table-hover">
+    <tr>
+        <th>
+            Mã sản phẩm
+        </th>
+        <th>
+            Tên sản phẩm
+        </th>
+        <th>
+            Số lượng bán
+        </th>
+        <th>
+            Lãi xuất
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MASP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TENSP)
+            </td>
+            <td>
+                @{
+                    int slBan = (int)item.SOLUONG;
+                }
+                @slBan
+            </td>
+            <td>
+                @{
+                    string laixuat = item.LAIXUAT.Value.ToString("#,##0") + "₫";
+                }
+                @laixuat
+            </td>
+        </tr>
+    }
+
+</table>

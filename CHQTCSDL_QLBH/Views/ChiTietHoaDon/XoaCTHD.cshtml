@@ -1,0 +1,60 @@
+﻿@model CHQTCSDL_QLBH.Models.CTHD
+
+@{
+    ViewBag.Title = "Xóa chi tiết hóa đơn";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2> XÓA CHI TIẾT HÓA ĐƠN</h2>
+<h3>Bạn có chắc chắn muốn xóa chi tiết hóa đơn này?</h3>
+@if (TempData["Failed"] != null)
+{
+    <div class="alert alert-danger">@TempData["Failed"]</div>
+}
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Số hóa đơn:
+        </dt>
+
+        <dd style="color:red">
+            @Html.DisplayFor(model => model.SOHD)
+        </dd>
+
+        <dt>
+            Sản phẩm:
+        </dt>
+
+        <dd style="color:red">
+            @Html.DisplayFor(model => model.SANPHAM.TENSP)
+        </dd>
+
+        <dt>
+            Đơn giá:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DONGIA)
+        </dd>
+
+        <dt>
+            Số lượng:
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SOLUONG)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" /> |
+            <span><a class="btn btn-default" href="~/ChiTietHoaDon/DanhSachCTHD?SOHD=@Model.SOHD">Quay về</a></span>
+        </div>
+    }
+</div>

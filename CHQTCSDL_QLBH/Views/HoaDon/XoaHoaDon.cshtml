@@ -1,0 +1,60 @@
+﻿@model CHQTCSDL_QLBH.Models.HOADON
+
+@{
+    ViewBag.Title = "XoaHoaDon";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>XÓA HÓA ĐƠN: <span style="color:red">@Model.SOHD</span></h2>
+<h3>Bạn có chắc chắn muốn xóa hóa đơn này?</h3>
+@if (TempData["Failed"] != null)
+{
+    <div class="alert alert-danger">@TempData["Failed"]</div>
+}
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Ngày tạo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NGAY)
+        </dd>
+
+        <dt>
+            Tổng trị giá
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TONGTG)
+        </dd>
+
+        <dt>
+            Tên khách hàng
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KHACHHANG.HOTEN)
+        </dd>
+
+        <dt>
+            Nhân viên tạo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NHANVIEN.HOTEN)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-danger" /> |
+            @Html.ActionLink("Quay về", "DanhSachHoaDon", null, new { @class = "btn btn-primary" })
+        </div>
+    }
+</div>

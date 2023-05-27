@@ -1,0 +1,62 @@
+﻿@model IEnumerable<CHQTCSDL_QLBH.Models.VIEW_HOATDONGCUANV>
+
+@{
+    ViewBag.Title = "Hoạt động nhân viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Hoạt Động Của Nhân Viên</h2>
+
+<table class="table table-hover">
+    <tr>
+        <th>
+            Mã nhân viên
+        </th>
+        <th>
+            Họ tên
+        </th>
+        <th>
+            Phiếu nhập
+        </th>
+        <th>
+            Số hóa đơn
+        </th>
+        <th>
+            Doanh thu
+        </th>
+        <th>
+            Lương
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MANV)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HOTEN)
+            </td>
+            <td>
+                @item.SOPHIEUDALAP.Value.ToString("#,##0")
+            </td>
+            <td>
+                @item.SOHDDALAP.Value.ToString("#,##0")
+            </td>
+            <td>
+                @{
+                    string loiNhuan = item.LOINHUAN?.ToString("#,##0") ?? "0";
+                }
+                @loiNhuan ₫
+            </td>
+            <td>
+                @{
+                    string luong = item.LUONG?.ToString("#,##0") ?? "0";
+                }
+                @luong ₫
+            </td>
+        </tr>
+    }
+
+</table>

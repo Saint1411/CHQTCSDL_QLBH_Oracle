@@ -1,0 +1,62 @@
+﻿@model IEnumerable<CHQTCSDL_QLBH.Models.VIEW_DANHSACHPHIEUNHAP>
+
+@{
+    ViewBag.Title = "Danh sách phiếu nhập";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách phiếu nhập</h2>
+
+
+<a href="~/PhieuNhap/ThemPhieuNhap" class="btn btn-success" style="margin-bottom: 12px">Thêm phiếu nhập</a>
+<p style="float:right; color:red">
+    <span style="color:black">Tổng trị giá: </span> @ViewBag.TongTriGia.ToString("#,##0") ₫
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Mã phiếu nhập
+        </th>
+        <th>
+            Ngày nhập
+        </th>
+        <th>
+            Trị giá
+        </th>
+        <th>
+            Nhà cung cấp
+        </th>
+        <th>
+            Nhân viên
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <a href="~/ChiTietPhieuNhap/DanhSachCTPN?MAPN=@item.MAPN" class="btn btn-info">
+                    @Html.DisplayFor(modelItem => item.MAPN)
+                </a>
+            </td>
+            <td>
+                @item.NGAYNHAP.Value.ToString("dd/MM/yyyy").Replace(' ', 'T')
+            </td>
+            <td>
+                @item.TONGTIENNHAP.Value.ToString("#,##0") ₫
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TENNCC)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TENNV)
+            </td>
+            <td>
+                @Html.ActionLink("Sửa", "CapNhatPhieuNhap", new { MAPN = item.MAPN }) |
+                @Html.ActionLink("Xóa", "XoaPhieuNhap", new { MAPN = item.MAPN })
+            </td>
+        </tr>
+    }
+
+</table>

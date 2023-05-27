@@ -1,0 +1,85 @@
+﻿@model CHQTCSDL_QLBH.Models.VIEW_HOATDONGCUANV
+
+@{
+    ViewBag.Title = "Chi tiết nhân viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Thông tin nhân viên</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Mã nhân viên
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.MANV)
+        </dd>
+        <dt>
+            Họ tên
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.HOTEN)
+        </dd>
+        <dt>
+            Giới tính
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.GIOITINH)
+        </dd>
+        <dt>
+            Số điện thoại
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SDT)
+        </dd>
+        <dt>
+            Địa chỉ
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DIACHI)
+        </dd>
+        <dt>
+            Số hóa đơn
+        </dt>
+        <dd>
+            @{
+                string shd = Model.SOHDDALAP?.ToString("#,##0") ?? "0";
+            }
+            @shd
+        </dd>
+        <dt>
+            Số phiếu nhập
+        </dt>
+        <dd>
+            @{
+            string spn = Model.SOPHIEUDALAP?.ToString("#,##0") ?? "0";
+            }
+            @spn
+        </dd>
+        <dt>
+            Lợi nhuận
+        </dt>
+        <dd>
+            @{
+                string loiNhuan = Model.LOINHUAN?.ToString("#,##0") ?? "0";
+            }
+            @loiNhuan ₫
+        </dd>
+        <dt>
+            Lương
+        </dt>
+
+        <dd>
+            @{
+                string luong = Model.LUONG?.ToString("#,##0") ?? "0";
+            }
+            @luong ₫
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "CapNhatNhanVien", new { MANV = Model.MANV }) |
+    @Html.ActionLink("Quay về", "DanhSachNhanVien")
+</p>
